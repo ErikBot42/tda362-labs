@@ -10,9 +10,8 @@ out vec3 ws_normal;
 uniform mat4 modelMatrix;
 uniform mat4 modelViewProjectionMatrix;
 
-void main()
-{
-	gl_Position = modelViewProjectionMatrix * vec4(position, 1.0);
-	texCoord = texCoordIn;
-	ws_normal = vec3(modelMatrix * vec4(normal, 0));
+void main() {
+    gl_Position = modelViewProjectionMatrix * vec4(position, 1.0);
+    texCoord = texCoordIn;
+    ws_normal = vec3(modelMatrix * vec4(normal, 0));
 }

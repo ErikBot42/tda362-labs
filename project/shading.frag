@@ -56,18 +56,15 @@ layout(location = 0) out vec4 fragmentColor;
 
 
 
-vec3 calculateDirectIllumiunation(vec3 wo, vec3 n, vec3 base_color)
-{
+vec3 calculateDirectIllumiunation(vec3 wo, vec3 n, vec3 base_color) {
 	return vec3(base_color);
 }
 
-vec3 calculateIndirectIllumination(vec3 wo, vec3 n, vec3 base_color)
-{
+vec3 calculateIndirectIllumination(vec3 wo, vec3 n, vec3 base_color) {
 	return vec3(0.0);
 }
 
-void main()
-{
+void main() {
 	float visibility = 1.0;
 	float attenuation = 1.0;
 
@@ -75,8 +72,7 @@ void main()
 	vec3 n = normalize(viewSpaceNormal);
 
 	vec3 base_color = material_color;
-	if(has_color_texture == 1)
-	{
+	if(has_color_texture == 1) {
 		base_color = base_color * texture(colorMap, texCoord).rgb;
 	}
 
@@ -90,8 +86,7 @@ void main()
 	// Add emissive term. If emissive texture exists, sample this term.
 	///////////////////////////////////////////////////////////////////////////
 	vec3 emission_term = material_emission * material_color;
-	if(has_emission_texture == 1)
-	{
+	if(has_emission_texture == 1) {
 		emission_term = texture(emissiveMap, texCoord).rgb;
 	}
 
